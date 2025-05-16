@@ -5,12 +5,13 @@ export const routes: Routes = [
     path: 'home',
     loadComponent: () => import('./home/home.page').then((m) => m.HomePage),
   },
-  {
-    path: 'accueil',
-    loadComponent: () => import('./app/Dashboard/accueil/accueil.page').then( m => m.AccueilPage)
+    {
+    path: 'dashboard',
+    loadComponent: () => import('./app/Dashboard/dashboard/dashboard.page').then( m => m.DashboardPage)
   },
   // {
-  //   path: 'a'
+  //   path: 'accueil',
+  //   loadComponent: () => import('./app/Dashboard/accueil/accueil.page').then( m => m.AccueilPage)
   // },
   {
     path: 'analyse-spatial',
@@ -24,7 +25,9 @@ export const routes: Routes = [
     path: 'cartographie',
     loadComponent: () => import('./app/Dashboard/cartographie/cartographie.page').then( m => m.CartographiePage)
   },
-    {
+
+
+  {
     path: '',
     redirectTo: 'home',
     pathMatch: 'full',
