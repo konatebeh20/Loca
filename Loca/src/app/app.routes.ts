@@ -1,35 +1,102 @@
 import { Routes } from '@angular/router';
+import { AuthPage } from './auth/auth.page';
 
 export const routes: Routes = [
+  // {
+  //   path: '',
+  //   redirectTo: 'auth',
+  //   pathMatch: 'full'
+  // },
+  
+  {
+    path: 'auth',
+    component: AuthPage,
+    children: [
+      {
+        path: '',
+        redirectTo: 'login',
+        pathMatch: 'full',
+      },
+      {
+        path: 'login',
+        loadComponent: () => import('./auth/login/login.page').then(m => m.LoginPage),
+      },
+      {
+        path: 'register',
+        loadComponent: () => import('./auth/register/register.page').then(m => m.RegisterPage),
+      },
+      {
+        path: 'forgot-password',
+        loadComponent: () => import('./auth/forgot-password/forgot-password.page').then(m => m.ForgotPasswordPage),
+      }
+    ]
+  },
+
+  
+
   {
     path: 'home',
     loadComponent: () => import('./home/home.page').then((m) => m.HomePage),
   },
-    {
-    path: 'dashboard',
-    loadComponent: () => import('./app/Dashboard/dashboard/dashboard.page').then( m => m.DashboardPage)
+  {
+    path: 'map',
+    loadComponent: () => import('./map/map.page').then( m => m.MapPage)
+  },
+  {
+    path: 'reports',
+    loadComponent: () => import('./reports/reports.page').then( m => m.ReportsPage)
+  },
+  {
+    path: 'login',
+    loadComponent: () => import('./auth/login/login.page').then( m => m.LoginPage)
+  },
+  {
+    path: 'register',
+    loadComponent: () => import('./auth/register/register.page').then( m => m.RegisterPage)
+  },
+  {
+    path: 'forgot-password',
+    loadComponent: () => import('./auth/forgot-password/forgot-password.page').then( m => m.ForgotPasswordPage)
   },
   // {
-  //   path: 'accueil',
-  //   loadComponent: () => import('./app/Dashboard/accueil/accueil.page').then( m => m.AccueilPage)
+  //   path: 'auth',
+  //   loadComponent: () => import('./auth/auth.page').then( m => m.AuthPage)
   // },
-  {
-    path: 'analyse-spatial',
-    loadComponent: () => import('./app/Dashboard/analyse-spatial/analyse-spatial.page').then( m => m.AnalyseSpatialPage)
-  },
-  {
-    path: 'meteo-incidents',
-    loadComponent: () => import('./app/Dashboard/meteo-incidents/meteo-incidents.page').then( m => m.MeteoIncidentsPage)
-  },
-  {
-    path: 'cartographie',
-    loadComponent: () => import('./app/Dashboard/cartographie/cartographie.page').then( m => m.CartographiePage)
+
+
+
+
+
+
+   // Auth routes group
+   {
+    path: 'auth',
+    component: AuthPage,
+    children: [
+      {
+        path: '',
+        redirectTo: 'login',
+        pathMatch: 'full',
+      },
+      {
+        path: 'login',
+        loadComponent: () => import('./auth/login/login.page').then(m => m.LoginPage),
+      },
+      {
+        path: 'register',
+        loadComponent: () => import('./auth/register/register.page').then(m => m.RegisterPage),
+      },
+      {
+        path: 'forgot-password',
+        loadComponent: () => import('./auth/forgot-password/forgot-password.page').then(m => m.ForgotPasswordPage),
+      }
+    ]
   },
 
 
-  {
-    path: '',
-    redirectTo: 'home',
-    pathMatch: 'full',
-  },
+   {
+    path: '**',
+    redirectTo: 'auth/login'
+  }
+
 ];
