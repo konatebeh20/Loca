@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, FormsModule, Validators } from '@angular/forms';
-import { IonContent, IonImg, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
+import { IonContent, IonImg, IonHeader, IonTitle, IonToolbar, IonInput } from '@ionic/angular/standalone';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -12,7 +12,10 @@ declare var $: any;
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
   standalone: true,
-  imports: [IonContent, IonImg, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule],
+  imports: [
+    IonContent, IonHeader, IonTitle, IonToolbar, 
+    CommonModule, FormsModule,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class LoginPage implements OnInit {
@@ -71,6 +74,13 @@ export class LoginPage implements OnInit {
   // }
 
   ngOnInit() {
+    if (this.login_form.valid) {
+      const credentials = this.login_form.value;
+      console.log('Données du formulaire :', credentials);
+      // Traitement ou appel API ici
+    } else {
+      console.log('Formulaire invalide');
+    }
   }
 
 }

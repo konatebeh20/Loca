@@ -1,10 +1,39 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="dark">
+    <ion-icon name="car" class="taxi-icon"></ion-icon>
     <ion-title>auth</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" class="welcome-content">
+  
+   <div class="auth-container">
+    <div class="logo-section">
+      <div class="taxi-icon-container">
+        <ion-icon name="car"></ion-icon>
+        <div class="taxi-label">TAXI</div>
+      </div>
+      <h1 class="welcome-title">Welcome to TaxiApp</h1>
+      <p class="welcome-subtitle">Your reliable transportation partner</p>
+    </div>
+    
+    <div class="action-buttons">
+      <ion-button expand="block" class="login-button" routerLink="/auth/login">
+        <ion-icon name="log-in-outline" slot="start"></ion-icon>
+        Login
+      </ion-button>
+      
+      <ion-button expand="block" class="register-button" fill="outline" routerLink="/auth/register">
+        <ion-icon name="person-add-outline" slot="start"></ion-icon>
+        Create Account
+      </ion-button>
+      
+      <div class="guest-option">
+        <a routerLink="/tabs">Continue as guest</a> 
+      </div>
+    </div>
+  </div>
+  
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">auth</ion-title>
