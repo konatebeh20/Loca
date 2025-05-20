@@ -2,11 +2,16 @@ import { Routes } from '@angular/router';
 import { AuthPage } from './auth/auth.page';
 
 export const routes: Routes = [
-  // {
-  //   path: '',
-  //   redirectTo: 'auth',
-  //   pathMatch: 'full'
-  // },
+  {
+    path: '',
+    redirectTo: 'auth',
+    pathMatch: 'full'
+  },
+
+  {
+    path: 'auth',
+    loadComponent: () => import('./auth/auth.page').then(m => m.AuthPage)
+  },
   
   {
     path: 'auth',
